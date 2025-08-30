@@ -21,6 +21,9 @@
         <form action="/delete/{{ task.id }}" method="POST" class="delete-form">
           <button type="submit">❌</button>
         </form>
+        <form action="/edit/{{ task.id }}" method="GET" class="edit-form">
+          <button type="submit">✏️</button>
+        </form>
       </li>
       {% endfor %}
     </ul>

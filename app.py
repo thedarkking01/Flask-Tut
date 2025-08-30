@@ -32,6 +32,19 @@ def delete_task(id):
     db.session.commit()
     return redirect(url_for('index'))
 
+
+
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit_task(id):
+    task = Task.query.get_or_404(id)
+
+    if request.method == 'POST':
+        task.content = request.form['task']
+        db.session.commit()
+        return redirect(url_for('index'))
+
+    return render_template('edit.html', task=task)
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
